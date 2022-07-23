@@ -1,0 +1,46 @@
+import Dependancies.CoreDependancies
+import Dependancies.TestDependancies
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdk = DefaultConfig.compileSdk
+
+    defaultConfig {
+        applicationId "com.dawoud.androidengineerchallenge"
+        minSdk = DefaultConfig.minSdk
+        targetSdk = DefaultConfig.targetSdk
+        versionCode = DefaultConfig.versionCode
+        versionName = DefaultConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation(CoreDependancies.CORE_KTX)
+    implementation(CoreDependancies.APPCOMPAT)
+    implementation(CoreDependancies.MATERIAL)
+    implementation(CoreDependancies.CONSTRAINTLAYOUT)
+    testImplementation(TestDependancies.JUNIT)
+    androidTestImplementation(TestDependancies.EXT_JUNIT)
+    androidTestImplementation(TestDependancies.ESPRESSO_CORE)
+}
