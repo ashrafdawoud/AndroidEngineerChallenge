@@ -1,3 +1,4 @@
+package Dependancies
 
 object RetrofitDependancy {
     const val RETROFIT = "com.squareup.retrofit2:retrofit:${DependanciesVersions.RETROFIT_VERSION}"

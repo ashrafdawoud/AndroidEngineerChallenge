@@ -11,4 +11,6 @@ object DependanciesVersions {
     const val BUILD_GRAGLE_VERSION = "7.0.3"
     const val KOTLIN_PLUGIN_VERSION = "1.6.10"
     const val HILT_PLUGIN_VERSION = "2.38.1"
+    const val COROUTINES_VERSION = "1.6.4"
+    const val NAVIGATION_VERSION = "2.5.0"
 }

@@ -5,8 +5,8 @@ import Dependancies.TestDependancies
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id("dagger.hilt.android.plugin")
-    id("kotlin-kapt")
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -38,13 +38,14 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
     implementation(project(":data"))
+    implementation(project(":domain"))
 
     implementation(CoreDependancies.CORE_KTX)
     implementation(CoreDependancies.APPCOMPAT)
     implementation(CoreDependancies.MATERIAL)
     implementation(CoreDependancies.CONSTRAINTLAYOUT)
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     //test
     testImplementation(TestDependancies.JUNIT)
     androidTestImplementation(TestDependancies.EXT_JUNIT)
@@ -52,4 +53,18 @@ dependencies {
     //hilt
     implementation(HiltDependancies.HILT)
     kapt(HiltDependancies.HILT_COMPILER)
+    //Cororutines
+    implementation(Dependancies.KotlinDependancies.COROUTINES)
+    //navigation
+    implementation(Dependancies.KotlinDependancies.NavigationFragment)
+    implementation(Dependancies.KotlinDependancies.NavigationUi)
+    //Retrofit
+    implementation (Dependancies.RetrofitDependancy.RETROFIT)
+    implementation (Dependancies.RetrofitDependancy.GSON)
+    implementation 'com.google.code.gson:gson:2.8.6'
+    //Room
+    implementation(RoomDependancies.ROOM_RUNTIME)
+    kapt(RoomDependancies.ROOM_Compiler)
+    implementation(RoomDependancies.ROOM_KTX)
+
 }
