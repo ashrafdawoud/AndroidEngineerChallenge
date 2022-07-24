@@ -1,6 +1,16 @@
+import Dependancies.CoreDependancies
+import Dependancies.RoomDependancies.ROOM_Compiler
+import Dependancies.RoomDependancies.ROOM_KTX
+import Dependancies.RoomDependancies.ROOM_RUNTIME
+import Dependancies.TestDependancies
+import RetrofitDependancy.GSON
+import RetrofitDependancy.RETROFIT
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -33,11 +43,20 @@ android {
 }
 
 dependencies {
+    //test
+    testImplementation(TestDependancies.JUNIT)
+    androidTestImplementation(TestDependancies.EXT_JUNIT)
+    androidTestImplementation(TestDependancies.ESPRESSO_CORE)
+    //Room
+    implementation(ROOM_RUNTIME)
+    annotationProcessor(ROOM_Compiler)
+    implementation(ROOM_KTX)
+    kapt(ROOM_Compiler)
+    //Retrofit
+    implementation (RETROFIT)
+    implementation (GSON)
+    //hilt
+    implementation(HiltDependancies.HILT)
+    kapt(HiltDependancies.HILT_COMPILER)
 
-    implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.appcompat:appcompat:1.4.2")
-    implementation("com.google.android.material:material:1.6.1")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 }
