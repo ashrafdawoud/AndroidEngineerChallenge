@@ -10,10 +10,11 @@ data class GeneralCreditsEntity(
     @ColumnInfo(name = "id")
     val id: Int,
     @ColumnInfo(name = "cast")
+    @TypeConverters(CastConverters::class)
     val cast: List<CastEntity>
 )
 
-data class CastEntity(
+ class CastEntity(
     @ColumnInfo(name ="adult")
     val adult: Boolean,
     @ColumnInfo(name ="gender")
@@ -41,12 +42,12 @@ data class CastEntity(
 )
 class CastConverters {
     @TypeConverter
-    fun fromcastJson(stat: CastEntity): String {
+    fun fromcastJson(stat: List<CastEntity>): String {
         return Gson().toJson(stat)
     }
     @TypeConverter
-    fun tocastEntity(json: String): CastEntity {
-        val type = object : TypeToken<CastEntity>() {}.type
-        return Gson().fromJson<CastEntity>(json, type)
+    fun tocastEntity(json: String): List<CastEntity> {
+        val type = object : TypeToken<List<CastEntity>>() {}.type
+        return Gson().fromJson<List<CastEntity>>(json, type)
     }
 }
