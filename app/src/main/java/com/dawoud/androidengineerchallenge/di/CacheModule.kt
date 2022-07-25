@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.dawoud.data.cache.MoviesRoomDataBase
+import com.dawoud.data.cache.dao.CreditsDao
 
 import com.dawoud.data.cache.dao.PopularMoviesDao
 import dagger.Module
@@ -27,5 +28,10 @@ object CacheModule {
     @Provides
     fun provideMovieDAO(roomDatabase: MoviesRoomDataBase): PopularMoviesDao {
         return roomDatabase.moviesDao()
+    }
+    @Singleton
+    @Provides
+    fun provideCreditsDao(roomDatabase: MoviesRoomDataBase): CreditsDao {
+        return roomDatabase.creditsDao()
     }
 }

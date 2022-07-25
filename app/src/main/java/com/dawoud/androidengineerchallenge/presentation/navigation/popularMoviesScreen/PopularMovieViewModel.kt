@@ -1,12 +1,10 @@
 package com.dawoud.androidengineerchallenge.presentation.navigation.popularMoviesScreen
 
-import android.util.Log
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.dawoud.domain.usecase.GetPopularMovies
+import androidx.lifecycle.*
+import com.dawoud.domain.model.MovieModel
+import com.dawoud.domain.usecase.movieList.GetPopularMoviesUseCase
+import com.dawoud.domain.usecase.movieList.SearchForMovieUseCase
 import com.dawoud.domain.utils.DataState
-import dagger.assisted.Assisted
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn
@@ -17,20 +15,28 @@ import javax.inject.Inject
 @ExperimentalCoroutinesApi
 @HiltViewModel
 class PopularMovieViewModel @Inject constructor(
-    private  val getPopularMovies: GetPopularMovies,
+    private  val getPopularMovies: GetPopularMoviesUseCase,
+    private val searchForMovie: SearchForMovieUseCase
 ):ViewModel() {
+
+    val _popularMovieDataSet: MutableLiveData<DataState<List<MovieModel>>> = MutableLiveData()
+    val popularMovieDataSet: LiveData<DataState<List<MovieModel>>>
+        get() = _popularMovieDataSet
+    val _searchMovieDataSet: MutableLiveData<DataState<List<MovieModel>>> = MutableLiveData()
+    val searchMovieDataSet: LiveData<DataState<List<MovieModel>>>
+        get() = _searchMovieDataSet
 
     fun getPopularMovies(page:Int){
         viewModelScope.launch {
             getPopularMovies.invok(page).onEach{
-                when(it){
-                    is DataState.Success ->{
-                        Log.e("data" , it.data.toString() )
-                    }
-                    is DataState.Error ->{
-                        Log.e("data" , it.exception.toString() )
-                    }
-                }
+                _popularMovieDataSet.value = it
+            }.launchIn(viewModelScope)
+        }
+    }
+    fun searchForMovie(query:String){
+        viewModelScope.launch {
+            searchForMovie.invoke(query).onEach {
+                _searchMovieDataSet.value = it
             }.launchIn(viewModelScope)
         }
     }

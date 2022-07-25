@@ -11,7 +11,12 @@ interface PopularMovieCall {
     @GET("movie/popular")
     suspend fun getPopularMovies(
         @Query("api_key") api_key: String,
-        /*@Query("language") language: String,
-        @Query("page") page: Int,*/
-    ):Response<GeneralMovieDto>
+        @Query("language") language: String,
+        @Query("page") page: Int,
+    ):GeneralMovieDto
+    @GET("search/movie")
+    suspend fun searchForMovie(
+        @Query("api_key") api_key: String,
+        @Query("query") query:String
+    ):GeneralMovieDto
 }

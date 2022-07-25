@@ -2,15 +2,21 @@ package com.dawoud.data.cache
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.dawoud.data.cache.dao.CreditsDao
 import com.dawoud.data.cache.dao.PopularMoviesDao
+import com.dawoud.data.cache.entity.CastConverters
+import com.dawoud.data.cache.entity.GeneralCreditsEntity
 import com.dawoud.data.cache.entity.MovieEntity
 
 
 @Database(
-    entities = [MovieEntity::class], version = 3, exportSchema = false
+    entities = [MovieEntity::class , GeneralCreditsEntity::class], version = 4, exportSchema = false
 )
+@TypeConverters(CastConverters::class)
 abstract class MoviesRoomDataBase : RoomDatabase() {
     abstract fun moviesDao():PopularMoviesDao
+    abstract fun creditsDao(): CreditsDao
     companion object {
         val DATABASE_NAME: String = "general_database"
     }

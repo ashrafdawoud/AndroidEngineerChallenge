@@ -1,5 +1,6 @@
 package com.dawoud.androidengineerchallenge.di
 
+import com.dawoud.data.network.calls.MovieDetailsCalls
 import com.dawoud.data.network.calls.PopularMovieCall
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -46,5 +47,12 @@ object NetworkModule {
         return retrofit
             .build()
             .create(PopularMovieCall::class.java)
+    }
+    @Singleton
+    @Provides
+    fun provideMoviewDetailsCall(retrofit: Retrofit.Builder): MovieDetailsCalls {
+        return retrofit
+            .build()
+            .create(MovieDetailsCalls::class.java)
     }
 }

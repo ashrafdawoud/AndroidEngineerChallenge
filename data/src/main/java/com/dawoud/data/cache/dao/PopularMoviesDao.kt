@@ -13,6 +13,8 @@ interface PopularMoviesDao {
 
     @Query("SELECT * From PopularMovieTable ORDER BY id DESC")
     suspend fun getAll(): List<MovieEntity>
+    @Query("SELECT * From PopularMovieTable WHERE id=:id LIMIT 1")
+    suspend fun getMovie(id:Int): MovieEntity
 
     @Query("DELETE From PopularMovieTable")
     suspend fun delete_table()
