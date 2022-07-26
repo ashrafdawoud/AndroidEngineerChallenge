@@ -34,7 +34,6 @@ object NetworkModule {
         val okHttpClient: OkHttpClient =OkHttpClient.Builder()
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
-            .protocols(Util.immutableList(Protocol.HTTP_1_1))
             .build()
         return Retrofit.Builder()
             .baseUrl("https://developers.themoviedb.org/3/")

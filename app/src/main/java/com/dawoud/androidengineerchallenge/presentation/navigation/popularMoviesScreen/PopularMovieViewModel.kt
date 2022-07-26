@@ -1,5 +1,6 @@
 package com.dawoud.androidengineerchallenge.presentation.navigation.popularMoviesScreen
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.dawoud.domain.model.MovieModel
 import com.dawoud.domain.usecase.movieList.GetPopularMoviesUseCase
@@ -30,6 +31,14 @@ class PopularMovieViewModel @Inject constructor(
         viewModelScope.launch {
             getPopularMovies.invok(page).onEach{
                 _popularMovieDataSet.value = it
+                when(it){
+                    is DataState.Success ->{
+                        Log.e("view_data", it.data.toString() )
+                    }
+                    is DataState.Error ->{
+                        Log.e("view_data",it.exception.message.toString() )
+                    }
+                }
             }.launchIn(viewModelScope)
         }
     }
@@ -37,6 +46,14 @@ class PopularMovieViewModel @Inject constructor(
         viewModelScope.launch {
             searchForMovie.invoke(query).onEach {
                 _searchMovieDataSet.value = it
+                when(it){
+                    is DataState.Success ->{
+                        Log.e("view_data_search", it.data.toString() )
+                    }
+                    is DataState.Error ->{
+                        Log.e("view_data_search",it.exception.message.toString() )
+                    }
+                }
             }.launchIn(viewModelScope)
         }
     }

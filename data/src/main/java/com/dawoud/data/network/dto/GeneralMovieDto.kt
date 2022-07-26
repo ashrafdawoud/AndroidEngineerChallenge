@@ -29,7 +29,7 @@ data class MovieDto(
     @SerializedName("overview")
     val overview :String,
     @SerializedName("popularity")
-    val popularity :Float,
+    val popularity :Double,
     @SerializedName("poster_path")
     @Nullable
     val poster_path :String?,
@@ -44,5 +44,5 @@ data class MovieDto(
     @SerializedName("video")
     val video :Boolean,
     @SerializedName("vote_average")
-    val vote_average :Float,
+    val vote_average :Double,
 )

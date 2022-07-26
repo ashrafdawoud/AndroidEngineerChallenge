@@ -23,7 +23,7 @@ data class MovieEntity(
     @ColumnInfo(name = "overview")
     val overview :String,
     @ColumnInfo(name = "popularity")
-    val popularity :Float,
+    val popularity :Double,
     @ColumnInfo(name = "poster_path")
     val poster_path :String?,
     @ColumnInfo(name = "release_date")

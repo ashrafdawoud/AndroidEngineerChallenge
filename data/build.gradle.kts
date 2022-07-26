@@ -62,5 +62,9 @@ dependencies {
     annotationProcessor(HiltDependancies.HILT_COMPILER)
     //Corountines
     implementation(Dependancies.KotlinDependancies.COROUTINES)
+    //mock
+    testImplementation(TestDependancies.MOCKITO_CORE)
+    testImplementation(TestDependancies.MOCK)
+    testImplementation(TestDependancies.MOCKITO_KOTLIN)
 
 }

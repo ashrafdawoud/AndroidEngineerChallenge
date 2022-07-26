@@ -13,4 +13,5 @@ object DependanciesVersions {
     const val HILT_PLUGIN_VERSION = "2.38.1"
     const val COROUTINES_VERSION = "1.6.4"
     const val NAVIGATION_VERSION = "2.5.0"
+    const val MOCK_VERSION = "4.6.1"
 }

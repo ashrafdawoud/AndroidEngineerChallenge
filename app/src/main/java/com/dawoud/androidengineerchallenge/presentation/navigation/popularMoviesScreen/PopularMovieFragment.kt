@@ -19,6 +19,7 @@ class PopularMovieFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_popular_movie, container, false)
         viewmodel.getPopularMovies(1)
+        viewmodel.searchForMovie("Avengers")
         val text = view.findViewById<TextView>(R.id.text)
         return view
     }
