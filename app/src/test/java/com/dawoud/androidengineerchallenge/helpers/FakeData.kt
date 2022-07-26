@@ -1,4 +1,4 @@
-package com.dawoud.data.helpers
+package com.dawoud.androidengineerchallenge.helpers
 
 import com.dawoud.domain.model.CastModel
 import com.dawoud.domain.model.GenerlCreditsModel
@@ -41,5 +41,8 @@ object FakeData {
             id = 0,
             cast = listOf(returnFakeCastModel()  , returnFakeCastModel())
         )
+    }
+    fun returnFakeMovieList():List<MovieModel>{
+        return listOf(returnFakeMovieModel() , returnFakeMovieModel())
     }
 }
