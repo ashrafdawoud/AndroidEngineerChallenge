@@ -13,10 +13,10 @@ interface PopularMovieCall {
         @Query("api_key") api_key: String,
         @Query("language") language: String,
         @Query("page") page: Int,
-    ):GeneralMovieDto
+    ):Response<GeneralMovieDto>
     @GET("search/movie")
     suspend fun searchForMovie(
         @Query("api_key") api_key: String,
         @Query("query") query:String
-    ):GeneralMovieDto
+    ):Response<GeneralMovieDto>
 }

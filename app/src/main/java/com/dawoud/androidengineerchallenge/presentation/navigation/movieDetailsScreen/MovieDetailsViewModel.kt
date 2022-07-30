@@ -9,7 +9,7 @@ import com.dawoud.domain.model.MovieModel
 import com.dawoud.domain.usecase.movieDetails.GetMovieCreditsUseCase
 import com.dawoud.domain.usecase.movieDetails.GetMovieUseCase
 import com.dawoud.domain.usecase.movieDetails.GetSimilarMoviesUseCase
-import com.dawoud.domain.utils.DataState
+import com.dawoud.domain.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -22,14 +22,14 @@ class MovieDetailsViewModel @Inject constructor (
     private val getSimilarMoviesUseCase: GetSimilarMoviesUseCase,
     private val getMovieCreditsUseCase: GetMovieCreditsUseCase
     ) :ViewModel(){
-    val _movieDetailsDataSet: MutableLiveData<DataState<MovieModel>> = MutableLiveData()
-    val movieDetailsDataSet: LiveData<DataState<MovieModel>>
+    val _movieDetailsDataSet: MutableLiveData<Resource<MovieModel>> = MutableLiveData()
+    val movieDetailsDataSet: LiveData<Resource<MovieModel>>
         get() = _movieDetailsDataSet
-    val _similarMovieDataSet: MutableLiveData<DataState<List<MovieModel>>> = MutableLiveData()
-    val similarMovieDataSet: LiveData<DataState<List<MovieModel>>>
+    val _similarMovieDataSet: MutableLiveData<Resource<List<MovieModel>>> = MutableLiveData()
+    val similarMovieDataSet: LiveData<Resource<List<MovieModel>>>
         get() = _similarMovieDataSet
-    val _MovieCridetsDataSet: MutableLiveData<DataState<GenerlCreditsModel>> = MutableLiveData()
-    val MovieCridetsDataSet: LiveData<DataState<GenerlCreditsModel>>
+    val _MovieCridetsDataSet: MutableLiveData<Resource<GenerlCreditsModel>> = MutableLiveData()
+    val MovieCridetsDataSet: LiveData<Resource<GenerlCreditsModel>>
         get() = _MovieCridetsDataSet
     fun getMovieDetails(id:Int){
         viewModelScope.launch {

@@ -3,6 +3,7 @@ package com.dawoud.data.network.calls
 import com.dawoud.data.network.dto.GeneralCreditsDto
 import com.dawoud.data.network.dto.GeneralMovieDto
 import com.dawoud.data.network.dto.MovieDto
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -12,15 +13,15 @@ interface MovieDetailsCalls {
     suspend fun getMovieDetails(
         @Query("api_key") api_key: String,
         @Path("id") id : String
-    ): MovieDto
+    ): Response<MovieDto>
     @GET("movie/{id}/similar")
     suspend fun getSimilarMovies(
         @Query("api_key") api_key: String,
         @Path("id") id : String
-    ): GeneralMovieDto
+    ): Response<GeneralMovieDto>
     @GET("movie/{id}/credits")
     suspend fun getMovieCredits(
         @Query("api_key") api_key: String,
         @Path("id") id : String
-    ): GeneralCreditsDto
+    ): Response<GeneralCreditsDto>
 }
