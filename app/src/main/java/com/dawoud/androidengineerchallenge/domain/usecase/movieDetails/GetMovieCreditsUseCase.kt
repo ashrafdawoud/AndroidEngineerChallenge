@@ -7,8 +7,9 @@ import com.dawoud.domain.repository.MovieDetailsRepository
 import com.dawoud.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class GetMovieCreditsUseCase (
+class GetMovieCreditsUseCase @Inject constructor(
     private val movieDetailsRepository: MovieDetailsRepository
 ) {
     suspend fun invoke(id:Int) : Flow<Resource<GenerlCreditsModel>> = flow {

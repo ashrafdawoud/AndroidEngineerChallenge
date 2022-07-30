@@ -1,6 +1,7 @@
 package com.dawoud.data.network.calls
 
 import com.dawoud.data.network.dto.GeneralMovieDto
+import com.dawoud.domain.model.MovieModel
 import com.google.gson.JsonPrimitive
 import retrofit2.Response
 import retrofit2.http.GET

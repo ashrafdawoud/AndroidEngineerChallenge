@@ -7,13 +7,14 @@ import com.dawoud.data.cache.dao.CreditsDao
 import com.dawoud.data.cache.dao.PopularMoviesDao
 import com.dawoud.data.cache.entity.CastConverters
 import com.dawoud.data.cache.entity.GeneralCreditsEntity
+import com.dawoud.data.cache.entity.Genre_idsConverters
 import com.dawoud.data.cache.entity.MovieEntity
 
 
 @Database(
-    entities = [MovieEntity::class , GeneralCreditsEntity::class], version = 4, exportSchema = false
+    entities = [MovieEntity::class , GeneralCreditsEntity::class], version = 7, exportSchema = false
 )
-@TypeConverters(CastConverters::class)
+@TypeConverters(CastConverters::class , Genre_idsConverters::class)
 abstract class MoviesRoomDataBase : RoomDatabase() {
     abstract fun moviesDao():PopularMoviesDao
     abstract fun creditsDao(): CreditsDao

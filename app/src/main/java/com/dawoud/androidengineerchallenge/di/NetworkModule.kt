@@ -13,6 +13,7 @@ import okhttp3.Protocol
 import okhttp3.internal.Util
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -39,6 +40,8 @@ object NetworkModule {
             .baseUrl("https://developers.themoviedb.org/3/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(ScalarsConverterFactory.create())
+
     }
     @Singleton
     @Provides

@@ -6,8 +6,9 @@ import com.dawoud.domain.repository.MovieDetailsRepository
 import com.dawoud.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class GetSimilarMoviesUseCase (
+class GetSimilarMoviesUseCase @Inject constructor(
     private val movieDetailsRepository: MovieDetailsRepository
         ) {
     suspend fun invoke(id: Int): Flow<Resource<List<MovieModel>>> =  flow {
@@ -17,7 +18,7 @@ class GetSimilarMoviesUseCase (
             val response = movieDetailsRepository.getSimilarMovies(id)
             if (response.isSuccessful)
                 response.body()?.let {
-                    emit(Resource.Success(it.results.toListModel()))
+                  //  emit(Resource.Success(it.results.toListModel()))
                 }
             emit(Resource.Error("${response.code()} ${response.message()}"))
         } catch (e: Exception) {

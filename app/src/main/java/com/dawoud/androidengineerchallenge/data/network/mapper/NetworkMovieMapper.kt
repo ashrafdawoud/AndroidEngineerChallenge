@@ -27,6 +27,10 @@ fun MovieDto.toModel():MovieModel{
         popularity = popularity,
         poster_path = poster_path,
         release_date = release_date,
-        title = title
+        title = title,
+        genre_ids = genre_ids,
+        vote_count = vote_count,
+        video = video,
+        vote_average = vote_average
     )
 }

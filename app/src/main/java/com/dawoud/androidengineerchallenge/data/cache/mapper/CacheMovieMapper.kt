@@ -4,11 +4,11 @@ import com.dawoud.data.cache.entity.MovieEntity
 import com.dawoud.domain.model.MovieModel
 
 
-fun List<MovieEntity>.toListModel():List<MovieModel>{
+fun List<MovieEntity>.toListModel(): List<MovieModel> {
     return this.map { it.toModel() }
 }
 
-fun MovieEntity.toModel():MovieModel{
+fun MovieEntity.toModel(): MovieModel {
     return MovieModel(
         id = id,
         adult = adult,
@@ -19,15 +19,19 @@ fun MovieEntity.toModel():MovieModel{
         popularity = popularity,
         poster_path = poster_path,
         release_date = release_date,
-        title = title
+        title = title,
+        genre_ids = genre_ids,
+        vote_count = vote_count,
+        video = video,
+        vote_average = vote_average
     )
 }
 
-fun List<MovieModel>.toListEntity():List<MovieEntity>{
+fun List<MovieModel>.toListEntity(): List<MovieEntity> {
     return this.map { it.toEntity() }
 }
 
-fun MovieModel.toEntity():MovieEntity{
+fun MovieModel.toEntity(): MovieEntity {
     return MovieEntity(
         id = id,
         adult = adult,
@@ -38,6 +42,10 @@ fun MovieModel.toEntity():MovieEntity{
         popularity = popularity,
         poster_path = poster_path,
         release_date = release_date,
-        title = title
+        title = title,
+        genre_ids = genre_ids,
+        vote_count = vote_count,
+        video = video,
+        vote_average = vote_average
     )
 }

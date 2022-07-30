@@ -1,5 +1,6 @@
 package com.dawoud.domain.usecase.movieList
 
+import android.util.Log
 import com.dawoud.data.cache.mapper.toEntity
 import com.dawoud.data.cache.mapper.toListModel
 import com.dawoud.data.network.mapper.toListModel
@@ -11,8 +12,9 @@ import com.dawoud.domain.repository.MovieListRepository
 import com.dawoud.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class GetPopularMoviesUseCase  constructor(
+class GetPopularMoviesUseCase @Inject constructor(
     private  val repository: MovieListRepository
 ) {
     suspend fun invok(page: Int): Flow<Resource<List<MovieModel>>> = flow {
@@ -29,7 +31,9 @@ class GetPopularMoviesUseCase  constructor(
             }
             emit(Resource.Error("${response.code()} ${response.message()}" , repository.getAllMoviesCache().toListModel()))
         } catch (e: Exception) {
-            emit(Resource.Error(e.message ?: e.toString() , repository.getAllMoviesCache().toListModel()))
+            emit(Resource.Error(
+                e.message ?: e.toString() ,
+                repository.getAllMoviesCache().toListModel()))
         }
     }
 }

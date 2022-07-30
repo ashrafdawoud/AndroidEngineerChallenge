@@ -6,8 +6,9 @@ import com.dawoud.domain.repository.MovieListRepository
 import com.dawoud.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class SearchForMovieUseCase (
+class SearchForMovieUseCase @Inject constructor(
     private val repository: MovieListRepository
     ) {
     suspend fun invoke(query:String): Flow<Resource<List<MovieModel>>> = flow {

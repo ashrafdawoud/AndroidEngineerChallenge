@@ -6,43 +6,60 @@ import javax.annotation.Nullable
 
 data class GeneralMovieDto(
     @SerializedName("page")
+    @Expose
     val page : Int ,
     @SerializedName("results")
+    @Expose
     val results : List<MovieDto>,
     @SerializedName("total_results")
+    @Expose
     val total_results: Int,
     @SerializedName("total_pages")
+    @Expose
     val total_pages: Int,
 )
 data class MovieDto(
     @SerializedName("id")
-    val id : Int,
+    @Expose
+    val id: Int,
     @SerializedName("adult")
-    val adult : Boolean,
+    @Expose
+    val adult: Boolean,
     @SerializedName("backdrop_path")
+    @Expose
     @Nullable
-    val backdrop_path : String?,
+    val backdrop_path: String?,
     @SerializedName("original_language")
-    val original_language :String,
+    @Expose
+    val original_language:String,
     @SerializedName("original_title")
-    val original_title :String,
+    @Expose
+    val original_title:String,
     @SerializedName("overview")
-    val overview :String,
+    @Expose
+    val overview:String,
     @SerializedName("popularity")
-    val popularity :Double,
+    val popularity: Double,
     @SerializedName("poster_path")
+    @Expose
     @Nullable
-    val poster_path :String?,
+    val poster_path:String?,
     @SerializedName("release_date")
-    val release_date :String,
+    @Expose
+    val release_date:String,
     @SerializedName("title")
-    val title :String,
+    @Expose
+    val title:String,
     @SerializedName("genre_ids")
-    val genre_ids :List<Int>,
+    @Expose
+    val genre_ids:List<Int>,
     @SerializedName("vote_count")
-    val vote_count :Int,
+    @Expose
+    val vote_count:Int,
     @SerializedName("video")
-    val video :Boolean,
+    @Expose
+    val video:Boolean,
     @SerializedName("vote_average")
-    val vote_average :Double,
+    @Expose
+    val vote_average:Double,
 )
